@@ -8,6 +8,7 @@
   <% if (locals.page_title) { %><title><%=: page_title | capitalize %></title><% } %>
   <link rel="icon" href="<%= asset('img/favicon.gif') %>"/>
 <% (locals.css || []).forEach(function(src) { -%>
+  <link rel="stylesheet" href="<%= dist('common.css') %>" />
   <link rel="stylesheet" href="<%= dist(src) %>" />
 <% }) -%>
 </head>

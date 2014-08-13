@@ -1,0 +1,43 @@
+.card {
+  &__image {
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: no-repeat center;
+    background-size: contain;
+  }
+
+  &__word {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__translation {
+    position: relative;
+    margin-bottom: 40px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__context {
+    margin-bottom: 0;
+  }
+
+  &__edit {
+    .transition(opacity .2s);
+    margin-left: .4em;
+    margin-right: -1.4em;
+    font-size: 18px;
+    opacity: 0;
+  }
+
+  &__word:hover &__edit,
+  &__translation:hover &__edit {
+    opacity: 1;
+  }
+}

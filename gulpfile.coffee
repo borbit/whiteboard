@@ -18,7 +18,8 @@ globAssetsJs    = './public/dist/**/*.js'
 
 globPageLess    = './public/pages/*/*.less'
 globPageCoffee  = './public/pages/*/*.coffee'
-commonModule    = './public/coffee/common.coffee'
+commonCoffee    = './public/coffee/common.coffee'
+commonLess      = './public/less/common.less'
 distDir         = './public/dist'
 
 gulp.task 'compile-less', ->
@@ -28,6 +29,16 @@ gulp.task 'compile-less', ->
 
   gulp
     .src(globPageLess)
+    .pipe(compile)
+    .pipe(gulp.dest distDir)
+
+gulp.task 'compile-common-less', ->
+  compile = gulpLess relativeUrls: yes
+  compile.on 'error', (err) ->
+    console.log err
+
+  gulp
+    .src(commonLess)
     .pipe(compile)
     .pipe(gulp.dest distDir)
 
@@ -53,7 +64,7 @@ gulp.task 'compile-coffee', ->
     .pipe(gulpRename extname: '.js')
     .pipe(gulp.dest distDir)
 
-gulp.task 'compile-common', ->
+gulp.task 'compile-common-coffee', ->
   compile = gulpBrowserify
     transform: ['coffeeify']
     extensions: ['.coffee']
@@ -67,14 +78,15 @@ gulp.task 'compile-common', ->
       bundler.require module.path, expose: module.name
 
   gulp
-    .src(commonModule, read: no)
+    .src(commonCoffee, read: no)
     .pipe(compile)
     .pipe(gulpRename extname: '.js')
     .pipe(gulp.dest distDir)
 
 gulp.task 'compile', [
+  'compile-common-less'
   'compile-less'
-  'compile-common'
+  'compile-common-coffee'
   'compile-coffee'
 ]
 
@@ -147,7 +159,7 @@ getExternalModules = ->
   if getExternalModules.modules?
     return getExternalModules.modules
 
-  modules = fs.readFileSync commonModule
+  modules = fs.readFileSync commonCoffee
   modules = modules.toString().split '\n'
   modules = modules.filter (module) -> module.length
   modules = modules.map (module) ->
