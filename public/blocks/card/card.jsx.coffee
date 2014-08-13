@@ -2,17 +2,33 @@
 React = require 'react'
 
 module.exports = ->
+  transcription = null
+
+  if @props.word.transcription
+    transcription = 
+      <span className="card__transcription">
+        <i className="card__play fa fa-play-circle"></i>
+        [{@props.word.transcription}]
+      </span>
+
   <figure className="card">
     <div className="card__image" style={backgroundImage: "url(#{@props.word.image})"}></div>
     <figcaption className="card__body">
-      <h3 className="card__word">{@props.word.word}<i className="card__edit fa fa-edit"></i></h3>
-      <h4 className="card__translation">{@props.word.translation}<i className="card__edit fa fa-edit"></i></h4>
-      <blockquote className="card__context">
-        <small>
-          <b>Super Mario</b> Bros, the successor to the 1983 arcade title Mario Bros., was designed by
-          Shigeru Miyamoto and Takashi Tezuka, both of whom belonged to Nintendo's former Creative
-          Department at the time.
-        </small>
-      </blockquote>
+      <h2 className="card__word">
+        {@props.word.word}
+        <i className="card__edit fa fa-edit"></i>
+      </h2>
+      {transcription}
+      <h4 className="card__translation">
+        {@props.word.translation}
+        <i className="card__edit fa fa-edit"></i>
+      </h4>
     </figcaption>
   </figure>
+
+# <blockquote className="card__context">
+#   <small>the need to maintain close links between industry and schools</small>
+# </blockquote>
+# <blockquote className="card__context">
+#   <small>the need to maintain close links between industry and schools</small>
+# </blockquote>

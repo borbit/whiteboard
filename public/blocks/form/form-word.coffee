@@ -48,7 +48,7 @@ module.exports = React.createClass
 
   resetState: ->
     @setState
-      translations: []
+      translations: null
       transcription: null
       word: null
 

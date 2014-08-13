@@ -3,6 +3,7 @@ React = require 'react'
 FormWord = require '../form/form-word'
 Modal = require '../modal/modal'
 Card = require '../card/card'
+cs = React.addons.classSet
 
 module.exports = ->
   if @state.word
@@ -18,6 +19,16 @@ module.exports = ->
       </td>
     </tr>
 
+  listTableClass = cs
+    'table': yes
+    'table-condensed': @state.condensed
+    'vocab__list': yes
+
+  toggleIconClass = cs
+    'fa': yes
+    'fa-align-justify': @state.condensed
+    'fa-bars': !@state.condensed
+
   <div className="vocab">
     {modal}
     <table className="vocab__head table">
@@ -31,14 +42,14 @@ module.exports = ->
               <button className="vocab__filter btn btn-default">Words</button>
               <button className="vocab__filter btn btn-default">Phrases</button>
             </div>
-            <button className="btn btn-default">
-              <i className="fa fa-align-justify"></i>
+            <button className="btn btn-default" onClick={@onToggle}>
+              <i className={toggleIconClass}></i>
             </button>
           </td>
         </tr>
       </thead>
     </table>
-    <table className="vocab__list table table-hover">
+    <table className={listTableClass}>
       <tbody>
         {words}
       </tbody>

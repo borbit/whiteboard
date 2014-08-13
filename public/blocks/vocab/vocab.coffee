@@ -24,6 +24,12 @@ module.exports = React.createClass
     flux = @getFlux()
     flux.actions.VocabActions.addWord word
 
+  onToggle: ->
+    @setState condensed: !@state.condensed
+
+  getInitialState: ->
+    condensed: no
+
   getStateFromFlux: ->
     flux = @getFlux()
     flux.stores.VocabStore.getState()

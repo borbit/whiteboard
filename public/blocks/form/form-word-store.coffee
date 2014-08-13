@@ -7,7 +7,7 @@ $ = require 'jquery'
 module.exports = Fluxxor.createStore
   initialize: ->
     @loading = no
-    @translations = []
+    @translations = null
     @transcription = null
     @word = null
 
@@ -16,10 +16,12 @@ module.exports = Fluxxor.createStore
     )
 
   onLookup: (word) ->
-    @word = word.trim()
+    return if @loading
+
     @loading = yes
-    @translations = []
+    @translations = null
     @transcription = null
+    @word = word.trim()
     @emit 'change'
     
     if ' ' in @word
@@ -32,6 +34,7 @@ module.exports = Fluxxor.createStore
         url: config.YANDEX_TRANSLATE_URL
         data: data
       
+      @translations = []
       promise.done (res) =>
         @translations.push text: res.text
         @loading = no
