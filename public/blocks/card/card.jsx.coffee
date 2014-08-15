@@ -17,12 +17,12 @@ module.exports = ->
     <figcaption className="card__body">
       <h2 className="card__word">
         {@props.word.word}
-        <i className="card__edit fa fa-pencil"></i>
+        <i className="card__edit fa fa-pencil-square"></i>
       </h2>
       {transcription}
       <h4 className="card__translation">
         {@props.word.translation}
-        <i className="card__edit fa fa-pencil"></i>
+        <i className="card__edit fa fa-pencil-square"></i>
       </h4>
       <Details/>
     </figcaption>

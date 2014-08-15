@@ -4,6 +4,7 @@ React = require 'react'
 module.exports = ->
   <dl className="details">
     <section className="details__section">
+      <i className="details__edit fa fa-pencil-square"></i>
       <dt className="details__title">Definitions:</dt>
       <dd className="details__content">
         <ul className="details__list list-unstyled">
@@ -16,6 +17,7 @@ module.exports = ->
     </section>
 
     <section className="details__section">
+      <i className="details__edit fa fa-pencil-square"></i>
       <dt className="details__title">Examples:</dt>
       <dd className="details__content">
         <ul className="details__list list-unstyled">
@@ -26,6 +28,7 @@ module.exports = ->
     </section>
 
     <section className="details__section">
+      <i className="details__edit fa fa-pencil-square"></i>
       <dt className="details__title">Related forms:</dt>
       <dd className="details__content">
         maintains, maintained, maintaining
