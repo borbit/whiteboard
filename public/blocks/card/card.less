@@ -1,27 +1,19 @@
 .card {
   &__image {
-    display: block;
-    margin: 0 auto;
     height: 320px;
     margin-bottom: 40px;
-    background: #000 no-repeat center;
-    background-size: contain;
   }
 
   &__word {
-    position: relative;
     margin-bottom: 0;
     text-align: center;
-    cursor: pointer;
   }
 
   &__translation {
     display: block;
-    position: relative;
     margin-top: 22px;
     margin-bottom: 40px;
     text-align: center;
-    cursor: pointer;
   }
 
   &__transcription {
@@ -29,12 +21,14 @@
     margin-top: 2px;
     text-align: center;
     color: @brand-primary;
+    cursor: pointer;
   }
 
   &__play {
     margin-right: 5px;
     vertical-align: middle;
     font-size: 18px;
+    cursor: pointer;
   }
 
   &__edit {
@@ -44,11 +38,13 @@
     vertical-align: middle;
     color: @brand-primary;
     font-size: 16px;
+    cursor: pointer;
     opacity: 0;
   }
 
   &__word:hover &__edit,
-  &__translation:hover &__edit {
+  &__translation:hover &__edit,
+  &__transcription:hover &__edit {
     opacity: 1;
   }
 }

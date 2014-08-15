@@ -1,6 +1,7 @@
 # @cjsx React.DOM
 React = require 'react'
 Details = require '../details/details'
+Mem = require '../mem/mem'
 
 module.exports = ->
   transcription = null
@@ -10,10 +11,13 @@ module.exports = ->
       <span className="card__transcription">
         <i className="card__play fa fa-play-circle"></i>
         [{@props.word.transcription}]
+        <i className="card__edit fa fa-pencil-square"></i>
       </span>
 
   <figure className="card">
-    <div className="card__image" style={backgroundImage: "url(#{@props.word.image})"}></div>
+    <div className="card__image">
+      <Mem image={@props.word.image} />
+    </div>
     <figcaption className="card__body">
       <h2 className="card__word">
         {@props.word.word}
@@ -27,7 +31,3 @@ module.exports = ->
       <Details/>
     </figcaption>
   </figure>
-
-# <blockquote className="card__context">
-#   <small>the need to maintain close links between industry and schools</small>
-# </blockquote>
