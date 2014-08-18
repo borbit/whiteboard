@@ -6,14 +6,7 @@
 
   &__section {
     position: relative;
-    padding: 9px;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    cursor: pointer;
-
-    &:hover {
-      border-color: @brand-primary;
-    }
+    padding: 10px;
   }
 
   &__title {
@@ -32,12 +25,38 @@
     margin-bottom: 0;
   }
 
-  &__edit {
-    display: none;
+  &__item {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    &:first-child {
+      margin-top: 0 !important;
+    }
+  }
+
+  &__edit,
+  &__save,
+  &__cancel {
     position: absolute;
     color: @brand-primary;
-    right: 5px;
-    top: 5px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  &__edit {
+    display: none;
+    right: 0;
+    top: 0;
+  }
+
+  &__save {
+    right: 20px;
+    top: 0;
+  }
+
+  &__cancel {
+    right: 0;
+    top: 0;
   }
 
   &__section:hover &__edit {

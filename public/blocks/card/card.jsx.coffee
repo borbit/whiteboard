@@ -28,6 +28,6 @@ module.exports = ->
         {@props.word.translation}
         <i className="card__edit fa fa-pencil-square"></i>
       </h4>
-      <Details/>
+      <Details flux={@detailsFlux}/>
     </figcaption>
   </figure>
