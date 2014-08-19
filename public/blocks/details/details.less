@@ -6,7 +6,7 @@
 
   &__section {
     position: relative;
-    padding: 10px;
+    margin: 10px;
   }
 
   &__title {
@@ -19,10 +19,6 @@
     &:first-child {
       margin-top: 0;
     }
-  }
-
-  &__list {
-    margin-bottom: 0;
   }
 
   &__item {
@@ -61,5 +57,14 @@
 
   &__section:hover &__edit {
     display: block;
+  }
+
+  &__textarea {
+    margin-bottom: 10px;
+    resize: none;
+  }
+
+  &__btn-add {
+    margin-right: 5px;
   }
 }
