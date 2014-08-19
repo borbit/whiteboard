@@ -1,11 +1,11 @@
 # @cjsx React.DOM
 React = require 'react'
 Details = require '../details/details'
+CardWord = require './card__word'
+CardTranslation = require './card__translation'
 Mem = require '../mem/mem'
 
 module.exports = ->
-  transcription = null
-
   if @props.word.transcription
     transcription = 
       <span className="card__transcription">
@@ -19,15 +19,9 @@ module.exports = ->
       <Mem image={@props.word.image} />
     </div>
     <figcaption className="card__body">
-      <h2 className="card__word">
-        {@props.word.word}
-        <i className="card__edit fa fa-pencil-square"></i>
-      </h2>
+      <CardWord word={@props.word.word}/>
       {transcription}
-      <h4 className="card__translation">
-        {@props.word.translation}
-        <i className="card__edit fa fa-pencil-square"></i>
-      </h4>
+      <CardTranslation translation={@props.word.translation}/>
       <Details flux={@detailsFlux}/>
     </figcaption>
   </figure>

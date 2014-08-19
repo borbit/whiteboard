@@ -33,8 +33,9 @@
 
   &__edit {
     .transition(opacity .2s);
-    margin-left: .4em;
-    margin-right: -1.4em;
+    width: 20px;
+    margin-left: 5px;
+    margin-right: -25px;
     vertical-align: middle;
     color: @brand-primary;
     font-size: 18px;
@@ -46,5 +47,12 @@
   &__translation:hover &__edit,
   &__transcription:hover &__edit {
     opacity: 1;
+  }
+
+  &__input {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    outline: none;
   }
 }
