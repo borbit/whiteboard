@@ -26,7 +26,7 @@ module.exports = ->
     <tr>
       <td><input type="checkbox"/></td>
       <td>{item.text}</td>
-      <td>@borbit</td>
+      <td><a className="details__user" href="#">@{item.user}</a></td>
     </tr>
 
   <div className="details__form clearfix">

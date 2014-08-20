@@ -26,14 +26,14 @@ module.exports = Fluxxor.createStore
 
     setTimeout (=>
       @definitions = [
-        {id: 0, text: 'to keep in existence or continuance; preserve; retain'}
-        {id: 0, text: 'to keep in an appropriate condition, operation, or force; keep unimpaired to keep in an appropriate condition, operation, or force; keep unimpaired'}
-        {id: 0, text: 'to keep in a specified state, position, etc.'}
-        {id: 0, text: 'to affirm; assert; declare'}
-        {id: 0, text: 'to keep in existence or continuance; preserve; retain'}
-        {id: 0, text: 'to keep in an appropriate condition, operation, or force; keep unimpaired to keep in an appropriate condition, operation, or force; keep unimpaired'}
-        {id: 0, text: 'to keep in a specified state, position, etc.'}
-        {id: 0, text: 'to affirm; assert; declare'}
+        {id: 0, user: 'borbit', text: 'to keep in existence or continuance; preserve; retain'}
+        {id: 0, user: 'edward', text: 'to keep in an appropriate condition, operation, or force; keep unimpaired to keep in an appropriate condition, operation, or force; keep unimpaired'}
+        {id: 0, user: 'serge', text: 'to keep in a specified state, position, etc.'}
+        {id: 0, user: 'laggyluke', text: 'to affirm; assert; declare'}
+        {id: 0, user: 'robert', text: 'to keep in existence or continuance; preserve; retain'}
+        {id: 0, user: 'deniro', text: 'to keep in an appropriate condition, operation, or force; keep unimpaired to keep in an appropriate condition, operation, or force; keep unimpaired'}
+        {id: 0, user: 'valentin', text: 'to keep in a specified state, position, etc.'}
+        {id: 0, user: 'andreo', text: 'to affirm; assert; declare'}
       ]
 
       @definitionsLoading = no

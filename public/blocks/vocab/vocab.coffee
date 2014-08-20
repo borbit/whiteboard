@@ -28,7 +28,7 @@ module.exports = React.createClass
     @setState condensed: !@state.condensed
 
   getInitialState: ->
-    condensed: no
+    condensed: yes
 
   getStateFromFlux: ->
     flux = @getFlux()

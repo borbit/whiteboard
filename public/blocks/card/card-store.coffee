@@ -24,7 +24,7 @@ module.exports = Fluxxor.createStore
 
       @pronunciationsLoading = no
       @emit 'change'
-    ), 200
+    ), 2000
 
   onUnloadPronunciations: ->
     @pronunciations = null

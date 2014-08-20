@@ -5,18 +5,9 @@ Modal = require '../modal/modal'
 Card = require '../card/card'
 cs = React.addons.classSet
 
-CardStore = require '../card/card-store'
-CardActions = require '../card/card-actions'
-
 module.exports = ->
   if @state.word
-    stores = CardStore: new CardStore
-    actions = CardActions: CardActions
-    
-    cardFlux = new Fluxxor.Flux stores, actions
-    card = <Card flux={cardFlux} word={@state.word}/>
-
-    modal = <Modal content={card} onClosed={@onCardClosed} />
+    modal = <Modal content={<Card word={@state.word}/>} onClosed={@onCardClosed} />
 
   words = @state.words.map (word) =>
     <tr>
@@ -35,8 +26,8 @@ module.exports = ->
 
   toggleIconClass = cs
     'fa': yes
-    'fa-align-justify': @state.condensed
-    'fa-bars': !@state.condensed
+    'fa-align-justify': !@state.condensed
+    'fa-bars': @state.condensed
 
   <div className="vocab">
     {modal}

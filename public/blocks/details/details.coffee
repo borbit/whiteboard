@@ -1,12 +1,12 @@
 React = require 'react'
 Fluxxor = require 'fluxxor'
-FluxMixin = Fluxxor.FluxMixin React
+FluxChildMixin = Fluxxor.FluxChildMixin React
 FluxWatchMixin = Fluxxor.StoreWatchMixin
 render = require './details.jsx'
 
 module.exports = React.createClass
   mixins: [
-    FluxMixin
+    FluxChildMixin
     FluxWatchMixin 'DetailsStore'
   ]
 

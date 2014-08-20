@@ -13,7 +13,7 @@ module.exports = React.createClass
   onEdit: ->
     @setState editing: yes
 
-  onBlur: ->
+  onCancel: ->
     @setState editing: no
 
   onKeyDown: (e) ->   

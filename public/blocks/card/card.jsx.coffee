@@ -2,7 +2,7 @@
 React = require 'react'
 Details = require '../details/details'
 CardWord = require './card__word'
-CardTranscription = require './card__transcription'
+CardPronunciation = require './card__pronunciation'
 CardTranslation = require './card__translation'
 Mem = require '../mem/mem'
 
@@ -13,8 +13,8 @@ module.exports = ->
     </div>
     <figcaption className="card__body">
       <CardWord word={@props.word.word}/>
-      <CardTranscription transcription={@props.word.transcription}/>
+      <CardPronunciation transcription={@props.word.transcription}/>
       <CardTranslation translation={@props.word.translation}/>
-      <Details flux={@detailsFlux}/>
+      <Details/>
     </figcaption>
   </figure>
