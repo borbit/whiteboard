@@ -21,13 +21,15 @@
     }
   }
 
-  &__item {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-
-    &:first-child {
-      margin-top: 0 !important;
-    }
+  table {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  td:first-child {
+    width: 10px;
+  }
+  td:last-child {
+    width: 10px;
   }
 
   &__edit,
@@ -64,7 +66,8 @@
     resize: none;
   }
 
-  &__btn-add {
+  &__btn-add,
+  &__btn-save {
     margin-right: 5px;
   }
 }

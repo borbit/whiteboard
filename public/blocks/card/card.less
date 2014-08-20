@@ -11,24 +11,14 @@
 
   &__translation {
     display: block;
-    margin-top: 22px;
+    margin-top: 20px;
     margin-bottom: 40px;
     text-align: center;
   }
 
   &__transcription {
     display: block;
-    margin-top: 2px;
     text-align: center;
-    color: @brand-primary;
-    cursor: pointer;
-  }
-
-  &__play {
-    margin-right: 5px;
-    vertical-align: middle;
-    font-size: 18px;
-    cursor: pointer;
   }
 
   &__edit {
@@ -54,5 +44,42 @@
     padding: 0;
     text-align: center;
     outline: none;
+  }
+
+  &__transcriptions {
+    position: relative;
+    background: @gray-lighter;
+    padding: 20px;
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  table {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  td:first-child {
+    width: 10px;
+  }
+  td:last-child {
+    width: 10px;
+  }
+
+  &__close {
+    position: absolute;
+    color: @brand-primary;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 1;
+    right: 20px;
+    top: 20px;
+  }
+
+  &__btn-save,
+  &__btn-record {
+    margin-right: 5px;
   }
 }
