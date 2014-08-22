@@ -30,6 +30,9 @@ app.locals.dist = (src) ->
 app.get '/', (req, res) ->
   res.render 'index/index'
 
+app.get '/signin', (req, res) ->
+  res.render 'sign/sign'
+
 app.listen config.port, config.host, (err) ->
   throw err if err
 

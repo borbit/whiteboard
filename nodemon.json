@@ -1,6 +1,7 @@
 {
   "ext": "coffee",
   "watch": [
-    "index.coffee"
+    "index.coffee",
+    "gulpfile.coffee"
   ]
 }

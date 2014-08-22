@@ -50,7 +50,7 @@ gulp.task 'compile-coffee', ->
   compile.on 'error', (err) ->
     console.log err
 
-  compile.on 'prebundle', (bundler) ->
+  compile.once 'prebundle', (bundler) ->
     bundler.transform 'browserify-ejs'
     bundler.transform {sourceMap: no, coffeeout: yes}, 'coffee-reactify'
     bundler.transform 'coffeeify'
