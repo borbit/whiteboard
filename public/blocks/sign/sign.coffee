@@ -1,15 +1,13 @@
 React = require 'react'
 render = require './sign.jsx'
+page = require 'page'
 
 module.exports = React.createClass
-  getInitialState: ->
-    signup: no
-
   onSignUp: ->
-    @setState signup: yes
+    page '/signup'
 
   onLogIn: ->
-    @setState signup: no
+    page '/login'
 
   render: ->
     render.apply @

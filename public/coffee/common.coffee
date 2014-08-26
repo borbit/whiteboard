@@ -1,3 +1,4 @@
+require 'page'
 require 'jquery'
 require 'underscore'
 require '../js/libs/react'

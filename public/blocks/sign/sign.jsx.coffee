@@ -8,10 +8,10 @@ module.exports = ->
     <input className="sign__input form-control" placeholder="Password" type="password" />
   ]
 
-  if @state.signup
+  if @props.view == 'signup'
     inputs.push <input className="sign__input form-control" placeholder="Repeat" type="password" />
 
-  if @state.signup
+  if @props.view == 'signup'
     submitButton = <button className="sign__btn btn btn-default btn-block">Sign up</button>
   else
     submitButton = <button className="sign__btn btn btn-default btn-block">Log in</button>
@@ -31,7 +31,7 @@ module.exports = ->
     </fieldset>
   ]
 
-  if @state.signup
+  if @props.view == 'signup'
     fieldsets.push(
       <fieldset className="sign__login">
         <span className="sign__link" onClick={@onLogIn}>Log in</span>, if you already have an account
@@ -46,8 +46,8 @@ module.exports = ->
 
   formClass = cs
     sign: yes
-    sign_login: !@state.signup
-    sign_signup: @state.signup
+    sign_login: @props.view == 'login'
+    sign_signup: @props.view == 'signup'
 
   <form className={formClass}>
     {fieldsets}
