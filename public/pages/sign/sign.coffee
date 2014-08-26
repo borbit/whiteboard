@@ -2,7 +2,7 @@
 React = require 'react'
 Fluxxor = require 'fluxxor'
 
-Sign = require '../../blocks/sign/sign'
+AppSign = require '../../blocks/app/app_sign'
 
 # stores =
 #   VocabStore: new VocabStore
@@ -18,4 +18,4 @@ Sign = require '../../blocks/sign/sign'
 
 # flux = new Fluxxor.Flux stores, actions
 
-React.renderComponent <Sign />, document.getElementById 'app'
+React.renderComponent <AppSign/>, document.getElementById 'app'

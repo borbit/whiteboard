@@ -2,18 +2,39 @@
   margin: 0 auto;
   width: 300px;
 
-  &__input:first-child {
+  &_login &__input:first-child,
+  &_signup &__input:first-child {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom: none;
   }
-  &__input:last-child {
+  &_login &__input:last-child,
+  &_signup &__input:last-child {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-top: none;
   }
+  &_signup &__input:nth-child(2) {
+    border-radius: 0;
+    border-bottom: none;
+    border-top: none;
+  }
 
-  &__btn i {
-    // float: left;
+  fieldset {
+    margin-bottom: 10px;
+  }
+  fieldset:last-child {
+    margin-bottom: 0;
+  }
+
+  &__login,
+  &__signup {
+    text-align: center;
+  }
+
+  &__link {
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
   }
 }
