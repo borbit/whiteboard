@@ -1,21 +1,10 @@
 # @cjsx React.DOM
+page = require 'page'
 React = require 'react'
-Fluxxor = require 'fluxxor'
-
 AppSign = require '../../blocks/app/app_sign'
 
-# stores =
-#   VocabStore: new VocabStore
-#   FormWordStore: new FormWordStore
-#   DetailsStore: new DetailsStore
-#   CardStore: new CardStore
-
-# actions =
-#   VocabActions: VocabActions
-#   FormWordActions: FormWordActions
-#   DetailsActions: DetailsActions
-#   CardActions: CardActions
-
-# flux = new Fluxxor.Flux stores, actions
-
-React.renderComponent <AppSign/>, document.getElementById 'app'
+page '/signup', ->
+  React.renderComponent <AppSign page="signup" errors={if signup?.errors then signup.errors}/>, document.getElementById 'app'
+page '/login', ->
+  React.renderComponent <AppSign page="login" errors={if login?.errors then login.errors}/>, document.getElementById 'app'
+page dispatch: yes

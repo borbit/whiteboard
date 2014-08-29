@@ -4,8 +4,8 @@ cs = React.addons.classSet
 
 module.exports = ->
   inputs = [
-    <input className="sign__input form-control" placeholder="Email" type="email" />,
-    <input className="sign__input form-control" placeholder="Password" type="password" />
+    <input className="sign__input form-control" placeholder="Email" name="email" type="email" />,
+    <input className="sign__input form-control" placeholder="Password" name="password" type="password" />
   ]
 
   if @props.view == 'signup'
@@ -16,7 +16,18 @@ module.exports = ->
   else
     submitButton = <button className="sign__btn btn btn-default btn-block">Log in</button>
 
-  fieldsets = [
+  fieldsets = []
+
+  if @props.errors?.length
+    errors = @props.errors.map (error) ->
+      <li>{error}</li>
+    fieldsets.push(
+      <fieldset className="sign__errors bg-danger">
+        <ul className="list-unstyled">{errors}</ul>
+      </fieldset>
+    )
+
+  fieldsets = fieldsets.concat [
     <fieldset>{inputs}</fieldset>,
     <fieldset className="checkbox">
       <label>
@@ -49,6 +60,6 @@ module.exports = ->
     sign_login: @props.view == 'login'
     sign_signup: @props.view == 'signup'
 
-  <form className={formClass}>
+  <form className={formClass} method="post">
     {fieldsets}
   </form>

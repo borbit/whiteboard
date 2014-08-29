@@ -2,6 +2,8 @@
   "ext": "coffee",
   "watch": [
     "index.coffee",
-    "gulpfile.coffee"
+    "gulpfile.coffee",
+    "config.coffee",
+    "lib/**/*"
   ]
 }

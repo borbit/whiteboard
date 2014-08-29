@@ -5,5 +5,6 @@
   locals.css = ['sign/sign.css'];
 -%>
 <% include ../layout_head.ejs %>
-<main id="app"></main>
+<main id="app"><%- body %></main>
+<script><%- state %></script>
 <% include ../layout_foot.ejs %>
