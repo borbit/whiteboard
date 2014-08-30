@@ -1,27 +1,27 @@
+config = require 'config'
 passport = require 'passport'
 LocalStrategy = require('passport-local').Strategy
-User = require('./db/user')
+FacebookStrategy = require('passport-facebook').Strategy
+User = require './db/user'
 
 passport.serializeUser (user, done) ->
-  done null, user.id
+  done null, user._id.toString()
 
 passport.deserializeUser (id, done) ->
   User.findById id, (err, user) ->
     done err, user
 
-strategyOptions =
+verifySignupOptions =
   usernameField: 'email'
   passwordField: 'password'
   passReqToCallback: yes
 
-strategyVerify = (req, email, password, done) ->
+verifySignup = (req, email, password, done) ->
   User.findOne {'local.email': email}, (err, user) ->
     return done err if err
 
     if user
-      req.flash 'signup.errors', 'This email is already taken'
-      req.res.locals.test = 123
-      return done null, no
+      return done null, no, 'Oops! This email is already taken.'
     
     user = new User
     user.local.email = email
@@ -30,7 +30,46 @@ strategyVerify = (req, email, password, done) ->
       return done err if err
       done null, user
 
-strategy = new LocalStrategy strategyOptions, strategyVerify
-passport.use 'local-signup', strategy
+verifyLoginOptions =
+  usernameField: 'email'
+  passwordField: 'password'
+  passReqToCallback: yes
+
+verifyLogin = (req, email, password, done) ->
+  User.findOne {'local.email': email}, (err, user) ->
+    return done err if err
+
+    unless user
+      return done null, no, 'Oops! No user found.'
+    unless user.validPassword password
+      return done null, no, 'Oops! Wrong password.'
+    
+    done null, user
+
+facebookConnectOptions =
+  clientID: config.auth_facebook.client_id,
+  clientSecret: config.auth_facebook.client_secret,
+  callbackURL: config.auth_facebook.callback_url
+
+facebookConnect = (token, refreshToken, profile, done) ->
+  User.findOne 'facebook.id': profile.id, (err, user) ->
+    return done err if err
+
+    if user
+      return done null, user
+    else
+      user = new User
+      user.facebook.id = profile.id
+      user.facebook.token = token
+      user.facebook.name = "#{profile.name.givenName} #{profile.name.familyName}"
+      user.facebook.email = profile.emails[0].value
+
+      user.save (err) ->
+        return done err if err
+        return done null, user
+
+passport.use new FacebookStrategy(facebookConnectOptions, facebookConnect)
+passport.use 'local-signup', new LocalStrategy(verifySignupOptions, verifySignup)
+passport.use 'local-login', new LocalStrategy(verifyLoginOptions, verifyLogin)
 
 module.exports = passport

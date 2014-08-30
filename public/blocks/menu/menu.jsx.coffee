@@ -7,5 +7,5 @@ module.exports = ->
     <li><a href="#">Whiteboards</a></li>
     <li><a href="#">Profile</a></li>
     <li className="menu__about"><a href="#"><i className="fa fa-info-circle"></i> About</a></li>
-    <li className="menu__signout"><a href="#"><i className="fa fa-sign-out"></i> Sign out</a></li>
+    <li className="menu__signout"><a href="/logout"><i className="fa fa-sign-out"></i> Sign out</a></li>
   </ul>

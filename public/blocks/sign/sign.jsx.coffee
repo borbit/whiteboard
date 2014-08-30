@@ -1,15 +1,20 @@
 # @cjsx React.DOM
+page = require 'page'
 React = require 'react'
 cs = React.addons.classSet
 
 module.exports = ->
-  inputs = [
-    <input className="sign__input form-control" placeholder="Email" name="email" type="email" />,
-    <input className="sign__input form-control" placeholder="Password" name="password" type="password" />
-  ]
-
   if @props.view == 'signup'
-    inputs.push <input className="sign__input form-control" placeholder="Repeat" type="password" />
+    inputs = [
+      <input className="sign__input form-control" placeholder="Email" name="email" defaultValue={@props.values?.email} type="email" required />,
+      <input className="sign__input form-control" placeholder="Password" name="password" defaultValue={@props.values?.password} type="password" required ref="passwd" onInput={@checkPasswords} />
+      <input className="sign__input form-control" placeholder="Repeat" name="repeat" defaultValue={@props.values?.repeat} type="password" required ref="repeat" onInput={@checkPasswords} />
+    ]
+  else
+    inputs = [
+      <input className="sign__input form-control" placeholder="Email" name="email" defaultValue={@props.values?.email} type="email" required />,
+      <input className="sign__input form-control" placeholder="Password" name="password" defaultValue={@props.values?.password} type="password" required />    
+    ]
 
   if @props.view == 'signup'
     submitButton = <button className="sign__btn btn btn-default btn-block">Sign up</button>
@@ -36,22 +41,22 @@ module.exports = ->
     </fieldset>,
     <fieldset>
       {submitButton}
-      <button className="sign__btn btn btn-primary btn-block">
+      <a href="/auth/facebook" className="sign__btn btn btn-primary btn-block">
         <i className="fa fa-facebook"></i> Connect with Facebook
-      </button>
+      </a>
     </fieldset>
   ]
 
   if @props.view == 'signup'
     fieldsets.push(
       <fieldset className="sign__login">
-        <span className="sign__link" onClick={@onLogIn}>Log in</span>, if you already have an account
+        <span className="sign__link" onClick={-> page '/login'}>Log in</span>, if you already have an account
       </fieldset>
     )
   else
     fieldsets.push(
       <fieldset className="sign__signup">
-        <span className="sign__link" onClick={@onSignUp}>Sign up</span>, if you don't have an account
+        <span className="sign__link" onClick={-> page '/signup'}>Sign up</span>, if you don't have an account
       </fieldset>
     )
 

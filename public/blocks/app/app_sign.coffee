@@ -3,8 +3,9 @@ render = require './app_sign.jsx'
 
 module.exports = React.createClass
   propTypes:
-    errors: React.PropTypes.array
-    page: React.PropTypes.string
+    page   : React.PropTypes.string
+    values : React.PropTypes.object
+    errors : React.PropTypes.array
 
   render: ->
     render.apply @

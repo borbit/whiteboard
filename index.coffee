@@ -1,11 +1,11 @@
+_ = require 'underscore'
 express = require 'express'
 mongoose = require 'mongoose'
 passport = require 'lib/passport'
-session = require 'express-session'
 cookieParser = require 'cookie-parser'
+cookieSession = require 'cookie-session'
 bodyParser = require 'body-parser'
 state = require 'express-state'
-flash = require 'connect-flash'
 engines = require 'consolidate'
 config = require 'config'
 
@@ -21,16 +21,14 @@ app.enable 'trust proxy'
 app.use express.static __dirname + '/public/'
 app.use bodyParser.urlencoded extended: yes
 app.use bodyParser.json()
-app.use cookieParser()
-app.use session
-  secret: 'success'
-  saveUninitialized: yes
-  resave: yes
+app.use cookieParser 'secret'
+app.use cookieSession
+  maxAge: 604800000 # 1 week
+  secret: 'secret'
 
-state.extend app
 app.use passport.initialize()
 app.use passport.session()
-app.use flash()
+state.extend app
 
 # Connect to mongodb
 # ---------------------------------
@@ -53,13 +51,28 @@ app.locals.dist = (src) ->
     src = manifest[src]  
   "/dist/#{src}"
 
+# Check if client is authenticated
+# ---------------------------------
+app.all '*', (req, res, next) ->
+  allowed = [
+    '/login'
+    '/signup'
+    '/about'
+    '/auth/facebook'
+    '/auth/facebook/callback'
+  ]
+  return next() if req.isAuthenticated()
+  return next() if _.contains allowed, req.path
+  res.redirect '/login'
+
 # Routes
 # ---------------------------------
-
 [
   require 'lib/routes/index'
   require 'lib/routes/signup'
   require 'lib/routes/login'
+  require 'lib/routes/logout'
+  require 'lib/routes/auth'
 ].forEach (route) ->
   route app
 

@@ -1,15 +1,20 @@
 React = require 'react'
 render = require './sign.jsx'
-page = require 'page'
 
 module.exports = React.createClass
-  onSignUp: ->
-    console.log 2
-    page '/signup'
+  propTypes:
+    page   : React.PropTypes.string
+    values : React.PropTypes.object
+    errors : React.PropTypes.array
 
-  onLogIn: ->
-    console.log 1
-    page '/login'
+  checkPasswords: (e) ->
+    passwd = @refs.passwd.getDOMNode()
+    repeat = @refs.repeat.getDOMNode()
 
+    if passwd.value != repeat.value
+      repeat.setCustomValidity 'The two passwords must match.'
+    else
+      repeat.setCustomValidity ''
+    
   render: ->
     render.apply @

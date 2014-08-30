@@ -1,3 +1,6 @@
+<% if (typeof state != 'undefined') { -%>
+  <script><%- state %></script>
+<% } -%>
   <script src="<%= dist('common.js') %>"></script>
 <% (locals.js || []).forEach(function(src) { -%>
   <script src="<%= dist(src) %>"></script>
