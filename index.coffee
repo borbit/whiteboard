@@ -73,6 +73,7 @@ app.all '*', (req, res, next) ->
   require 'lib/routes/login'
   require 'lib/routes/logout'
   require 'lib/routes/auth'
+  require 'lib/routes/cards'
 ].forEach (route) ->
   route app
 

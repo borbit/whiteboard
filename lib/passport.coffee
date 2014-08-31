@@ -24,8 +24,8 @@ verifySignup = (req, email, password, done) ->
       return done null, no, 'Oops! This email is already taken.'
     
     user = new User
-    user.local.email = email
-    user.local.password = user.generateHash password
+    user.auth_local.email = email
+    user.auth_local.password = user.generateHash password
     user.save (err) ->
       return done err if err
       done null, user
@@ -59,10 +59,10 @@ facebookConnect = (token, refreshToken, profile, done) ->
       return done null, user
     else
       user = new User
-      user.facebook.id = profile.id
-      user.facebook.token = token
-      user.facebook.name = "#{profile.name.givenName} #{profile.name.familyName}"
-      user.facebook.email = profile.emails[0].value
+      user.auth_facebook.id = profile.id
+      user.auth_facebook.token = token
+      user.auth_facebook.name = "#{profile.name.givenName} #{profile.name.familyName}"
+      user.auth_facebook.email = profile.emails[0].value
 
       user.save (err) ->
         return done err if err
