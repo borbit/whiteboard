@@ -5,6 +5,7 @@ mongoose_time = require 'mongoose-time'
 # ----------------------------------------
 Schema = mongoose.Schema
   word: String
+  pos: String
 
 # populates created_at and updated_at
 # ----------------------------------------

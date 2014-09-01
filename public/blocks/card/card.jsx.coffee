@@ -9,12 +9,16 @@ Mem = require '../mem/mem'
 module.exports = ->
   <figure className="card">
     <div className="card__image">
-      <Mem image={@props.word.image} />
+      <Mem image={@props.mem} />
     </div>
     <figcaption className="card__body">
-      <CardWord word={@props.word.word}/>
-      <CardPronunciation transcription={@props.word.transcription}/>
-      <CardTranslation translation={@props.word.translation}/>
-      <Details/>
+      <CardWord word={@props.word}/>
+      <CardPronunciation transcription={@props.transcription}/>
+      <CardTranslation translation={@props.translation}/>
+      <Details
+        definitions={@props.definitions}
+        examples={@props.examples}
+        forms={@props.forms}
+      />
     </figcaption>
   </figure>

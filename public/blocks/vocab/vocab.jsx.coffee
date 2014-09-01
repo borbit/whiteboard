@@ -6,16 +6,25 @@ Card = require '../card/card'
 cs = React.addons.classSet
 
 module.exports = ->
-  if @state.word
-    modal = <Modal content={<Card word={@state.word}/>} onClosed={@onCardClosed} />
+  if @state.card
+    card = <Card
+      word={@state.card.word}
+      transcription={@state.card.transcription}
+      translation={@state.card.translation}
+      definitions={@state.card.definitions}
+      examples={@state.card.examples}
+      forms={@state.card.forms}
+      mem={@state.card.mem}
+    />
+    modal = <Modal content={card} onClosed={@onCardClosed} />
 
-  words = @state.words.map (word) =>
+  cards = @state.cards.map (card) =>
     <tr>
       <td width="40"><input type="checkbox"/></td>
-      <td onClick={@onWordClick} data-id={word._id}>
+      <td onClick={@onCardClick} data-id={card._id}>
         <i className="vocab__play fa fa-play-circle"></i> 
-        <span className="vocab__word">{word.word}</span> — 
-        <span className="vocab__translation">{word.translation}</span>
+        <span className="vocab__word">{card.word.word}</span> — 
+        <span className="vocab__translation">{card.translation}</span>
       </td>
     </tr>
 
@@ -35,11 +44,11 @@ module.exports = ->
       <thead>
         <tr>
           <td width="40"><input type="checkbox"/></td>
-          <td width="250"><FormWord onAdd={@onWordAdd}/></td>
+          <td width="250"><FormWord onAdd={@onCardAdd}/></td>
           <td>
             <div className="btn-group vocab__filters">
               <button className="vocab__filter btn btn-default active">All</button>
-              <button className="vocab__filter btn btn-default">Words</button>
+              <button className="vocab__filter btn btn-default">Cards</button>
               <button className="vocab__filter btn btn-default">Phrases</button>
             </div>
             <button className="btn btn-default" onClick={@onToggle}>
@@ -51,7 +60,7 @@ module.exports = ->
     </table>
     <table className={listTableClass}>
       <tbody>
-        {words}
+        {cards}
       </tbody>
     </table>
   </div>

@@ -7,8 +7,8 @@ Schema = mongoose.Schema
   word: {type: mongoose.Schema.ObjectId, ref: 'Word'}
   user: {type: mongoose.Schema.ObjectId, ref: 'User'}
   definitions: [{type: mongoose.Schema.ObjectId, ref: 'WordDefinition'}]
-  examples: [{type: mongoose.Schema.ObjectId, ref: 'WordExamples'}]
-  forms: [{type: mongoose.Schema.ObjectId, ref: 'WordForms'}]
+  examples: [{type: mongoose.Schema.ObjectId, ref: 'WordExample'}]
+  forms: [{type: mongoose.Schema.ObjectId, ref: 'WordForm'}]
   pron: {type: mongoose.Schema.ObjectId, ref: 'WordPron'}
   transcription: String
   translation: String

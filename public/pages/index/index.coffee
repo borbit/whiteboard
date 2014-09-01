@@ -1,4 +1,6 @@
 # @cjsx React.DOM
+require '../../coffee/bootstrap'
+
 React = require 'react'
 Fluxxor = require 'fluxxor'
 
@@ -11,10 +13,10 @@ DetailsActions  = require '../../blocks/details/details-actions'
 CardStore       = require '../../blocks/card/card-store'
 CardActions     = require '../../blocks/card/card-actions'
 
-App = require '../../blocks/app/app'
+AppVocab = require '../../blocks/app/app_vocab'
 
 stores =
-  VocabStore: new VocabStore
+  VocabStore: new VocabStore vocab.cards
   FormWordStore: new FormWordStore
   DetailsStore: new DetailsStore
   CardStore: new CardStore
@@ -27,4 +29,4 @@ actions =
 
 flux = new Fluxxor.Flux stores, actions
 
-React.renderComponent <App flux={flux} />, document.getElementById 'app'
+React.renderComponent <AppVocab flux={flux} />, document.getElementById 'app'

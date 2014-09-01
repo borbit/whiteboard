@@ -1,6 +1,7 @@
 require 'page'
 require 'jquery'
 require 'underscore'
+require 'backbone'
 require '../js/libs/react'
 require '../js/libs/fluxxor'
 require '../js/libs/bootstrap'

@@ -9,5 +9,14 @@ module.exports = React.createClass
     FluxChildMixin
   ]
 
+  propsTypes:
+    mem: React.PropTypes.object
+    word: React.PropTypes.object
+    transcription: React.PropTypes.string
+    translation: React.PropTypes.string
+    definitions: React.PropTypes.array
+    examples: React.PropTypes.array
+    forms: React.PropTypes.array
+
   render: ->
     render.apply @

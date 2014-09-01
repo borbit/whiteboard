@@ -1,10 +1,16 @@
 _ = require 'underscore'
 
 events = 
-  ADD_WORD: 'ADD_WORD'
-  EDIT_WORD: 'EDIT_WORD'
-  REMOVE_WORD: 'REMOVE_WORD'
+  ADD_CARD: 'ADD_CARD'
+  GET_CARD: 'GET_CARD'
+  REMOVE_CARD: 'REMOVE_CARD'
 
 module.exports = _.extend events,
-  addWord: (word) ->
-    @dispatch events.ADD_WORD, word
+  addCard: (word) ->
+    @dispatch events.ADD_CARD, word
+
+  getCard: (cardId) ->
+    @dispatch events.GET_CARD, cardId
+
+  removeCard: (cardId) ->
+    @dispatch events.REMOVE_CARD, cardId

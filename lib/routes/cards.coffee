@@ -3,27 +3,33 @@ db = require 'lib/db'
 
 module.exports = (app) ->
   
-  # Get all user cards
+  # Get card data
   # ---------------------------------
-  app.get '/cards/:userId', (req, res, next) ->
+  app.get '/card/:cardId', (req, res, next) ->
     db.Card
-      .find('user': req.params.userId)
-      .populate('word', 'word')
+      .findById(req.params.cardId)
+      .populate('user')
+      .populate('word')
+      .populate('pron')
+      .populate('definitions')
+      .populate('examples')
+      .populate('forms')
       .exec (err, words) ->
         return next err if err
         res.json words
 
-  # Create a new card
+  # Create a card
   # ---------------------------------
-  app.post '/cards/:userId', (req, res, next) ->
+  app.post '/card', (req, res, next) ->
     data =
-      word: 'test'
-      transcription: 'transcription'
-      translation: 'translation'
+      word: req.body.word
+      transcription: req.body.transcription
+      translation: req.body.translation
+      pos: req.body.pos
     
     async.auto {
       user: (cb) ->
-        db.User.findById req.params.userId, (err, user) ->
+        db.User.findById req.user.id, (err, user) ->
           return cb err if err
           return cb 'No user found' unless user
           cb null, user
@@ -34,6 +40,7 @@ module.exports = (app) ->
           return cb null, word if word
           word = new db.Word
           word.word = data.word
+          word.pos = data.pos
           word.save (err, word) -> 
             return cb err if err
             cb null, word
@@ -58,25 +65,10 @@ module.exports = (app) ->
         .exec (err, data) ->
           return next err if err
           res.json data
-  
-  # Get card data
-  # ---------------------------------
-  app.get '/card/:cardId', (req, res, next) ->
-    db.Card
-      .findById(req.params.cardId)
-      .populate('user')
-      .populate('word')
-      .populate('pron')
-      .populate('definitions')
-      .populate('examples')
-      .populate('forms')
-      .exec (err, words) ->
-        return next err if err
-        res.json words
 
   # Edit card data
   # ---------------------------------
-  app.post '/card/:cardId', (req, res, next) ->
+  app.put '/card/:cardId', (req, res, next) ->
 
   # Delete card data
   # ---------------------------------

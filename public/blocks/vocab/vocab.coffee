@@ -14,15 +14,13 @@ module.exports = React.createClass
   onCardClosed: ->
     @setState word: null
 
-  onWordClick: (e) ->
-    wordId = +e.target.dataset.id
-    wordData = _.find @state.words, (word) ->
-      word._id == wordId
-    @setState word: wordData
-
-  onWordAdd: (word) ->
+  onCardClick: (e) ->
     flux = @getFlux()
-    flux.actions.VocabActions.addWord word
+    flux.actions.VocabActions.getCard e.target.dataset.id
+
+  onCardAdd: (word) ->
+    flux = @getFlux()
+    flux.actions.VocabActions.addCard word
 
   onToggle: ->
     @setState condensed: !@state.condensed
