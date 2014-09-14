@@ -1,5 +1,5 @@
 # @cjsx React.DOM
-React = require 'react'
+React = require 'react/addons'
 Pron = require '../pron/pron'
 
 module.exports = ->

@@ -1,5 +1,5 @@
 # @cjsx React.DOM
-React = require 'react'
+React = require 'react/addons'
 DetailsForm = require './details__form'
 
 module.exports = ->

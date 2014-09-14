@@ -1,6 +1,6 @@
 # @cjsx React.DOM
 page = require 'page'
-React = require 'react'
+React = require 'react/addons'
 AppSign = require '../../blocks/app/app_sign'
 
 page '/signup', ->

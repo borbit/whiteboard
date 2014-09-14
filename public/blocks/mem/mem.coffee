@@ -1,5 +1,5 @@
 $ = require 'jquery'
-React = require 'react'
+React = require 'react/addons'
 render = require './mem.jsx'
 
 module.exports = React.createClass

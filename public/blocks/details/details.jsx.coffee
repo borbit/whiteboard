@@ -1,5 +1,5 @@
 # @cjsx React.DOM
-React = require 'react'
+React = require 'react/addons'
 DetailsSection = require './details__section'
 DetailsList = require './details__list'
 DetailsLine = require './details__line'

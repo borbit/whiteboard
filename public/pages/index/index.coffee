@@ -1,7 +1,7 @@
 # @cjsx React.DOM
 require '../../coffee/bootstrap'
 
-React = require 'react'
+React = require 'react/addons'
 Fluxxor = require 'fluxxor'
 
 VocabStore      = require '../../blocks/vocab/vocab-store'

@@ -1,4 +1,4 @@
-React = require 'react'
+React = require 'react/addons'
 Fluxxor = require 'fluxxor'
 FluxChildMixin = Fluxxor.FluxChildMixin React
 FluxWatchMixin = Fluxxor.StoreWatchMixin

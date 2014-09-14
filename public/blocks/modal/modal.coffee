@@ -1,5 +1,5 @@
 $ = require 'jquery'
-React = require 'react'
+React = require 'react/addons'
 render = require './modal.jsx'
 
 module.exports = React.createClass

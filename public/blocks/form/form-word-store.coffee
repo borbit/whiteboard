@@ -6,14 +6,17 @@ $ = require 'jquery'
 
 module.exports = Fluxxor.createStore
   initialize: ->
+    @reset()
+    @bindActions(
+      actions.LOOKUP, @onLookup
+      actions.RESET, @onReset
+    )
+
+  reset: ->
     @loading = no
     @translations = null
     @transcription = null
     @word = null
-
-    @bindActions(
-      actions.LOOKUP, @onLookup
-    )
 
   onLookup: (word) ->
     return if @loading
@@ -61,6 +64,10 @@ module.exports = Fluxxor.createStore
 
         @loading = no
         @emit 'change'
+
+  onReset: ->
+    @reset()
+    @emit 'change'
 
   getState: ->
     translations: @translations

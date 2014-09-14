@@ -1,4 +1,4 @@
-React = require 'react'
+React = require 'react/addons'
 render = require './card__translation.jsx'
 
 module.exports = React.createClass

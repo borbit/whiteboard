@@ -1,6 +1,13 @@
 .vocab {
-  &__head {
+  &__head,
+  &__list,
+  &__group {
     margin-bottom: 0;
+  }
+
+  &__group {
+    font-size: 13px;
+    color: #777;
   }
   
   &__head td,
@@ -8,12 +15,13 @@
     vertical-align: middle !important;
   }
 
-  &__head td:first-child,
-  &__list td:first-child {
+  &__head td:nth-child(1),
+  &__list td:nth-child(1),
+  &__list td:nth-child(3) {
     text-align: center;
   }
 
-  &__head td:last-child {
+  &__head td:nth-child(3) {
     text-align: right;
   }
 
@@ -32,5 +40,17 @@
   &__play {
     margin-right: 10px;
     color: @brand-primary;
+  }
+
+  &__learn,
+  &__learned {
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 16px;
+    color: #777;
+
+    &:hover {
+      color: #333;
+    }
   }
 }

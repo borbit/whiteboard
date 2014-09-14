@@ -1,5 +1,5 @@
 # @cjsx React.DOM
-React = require 'react'
+React = require 'react/addons'
 
 module.exports = ->
   unless @state.formOpened 

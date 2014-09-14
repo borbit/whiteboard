@@ -1,5 +1,5 @@
 # @cjsx React.DOM
-React = require 'react'
+React = require 'react/addons'
 Sign = require '../../blocks/sign/sign'
 
 module.exports = ->

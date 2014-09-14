@@ -1,5 +1,5 @@
 # @cjsx React.DOM
-React = require 'react'
+React = require 'react/addons'
 Vocab = require '../../blocks/vocab/vocab'
 Menu = require '../../blocks/menu/menu'
 

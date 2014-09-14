@@ -1,5 +1,5 @@
 # @cjsx React.DOM
-React = require 'react'
+React = require 'react/addons'
 Details = require '../details/details'
 CardWord = require './card__word'
 CardPronunciation = require './card__pronunciation'

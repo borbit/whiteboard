@@ -1,4 +1,4 @@
-React = require 'react'
+React = require 'react/addons'
 Fluxxor = require 'fluxxor'
 FluxMixin = Fluxxor.FluxMixin React
 render = require './app_vocab.jsx'

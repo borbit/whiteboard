@@ -12,6 +12,7 @@ Schema = mongoose.Schema
   pron: {type: mongoose.Schema.ObjectId, ref: 'WordPron'}
   transcription: String
   translation: String
+  learned: Boolean
 
 # populates created_at and updated_at
 # ----------------------------------------

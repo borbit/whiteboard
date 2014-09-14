@@ -1,5 +1,6 @@
-React = require 'react'
+React = require 'react/addons'
 Fluxxor = require 'fluxxor'
+FluxStateMixin = require '../../coffee/react-mixins/flux_state'
 FluxChildMixin = Fluxxor.FluxChildMixin React
 FluxWatchMixin = Fluxxor.StoreWatchMixin
 render = require './details.jsx'
@@ -8,10 +9,8 @@ module.exports = React.createClass
   mixins: [
     FluxChildMixin
     FluxWatchMixin 'DetailsStore'
+    FluxStateMixin 'DetailsStore'
   ]
-
-  getStateFromFlux: ->
-    @getFlux().stores.DetailsStore.getState()
 
   editDefinitions: ->
     @getFlux().actions.DetailsActions.loadDefinitions()

@@ -1,3 +1,4 @@
+_ = require 'underscore'
 async = require 'async'
 db = require 'lib/db'
 
@@ -69,7 +70,18 @@ module.exports = (app) ->
   # Edit card data
   # ---------------------------------
   app.put '/card/:cardId', (req, res, next) ->
+    data = _.pick req.body, 'learned'
+    db.Card
+      .findByIdAndUpdate(req.params.cardId, data)
+      .exec (err, card) ->
+        return next err if err
+        res.json card
 
   # Delete card data
   # ---------------------------------
   app.del '/card/:cardId', (req, res, next) ->
+    db.Card
+      .findByIdAndRemove(req.params.cardId)
+      .exec (err) ->
+        return next err if err
+        res.send 204

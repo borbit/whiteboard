@@ -3,17 +3,20 @@
     margin-bottom: 20px;
   }
 
-  &__page {
+  &_sign &__page,
+  &_vocab &__page {
     background: #f7f7f7;
   }
 
+
   &_vocab &__page {
-    padding: 40px 40px 20px;
+    padding: 40px;
     max-width: 1240px;
     margin: 0 auto;
   }
   
-  &_sign {
+  &_sign,
+  &_board {
     height: 100%;
   }
 
@@ -22,6 +25,11 @@
     align-items: center;
     justify-content: center;
     padding: 40px;
+    margin: 0 20px;
+    height: 100%;
+  }
+
+  &_board &__page {
     margin: 0 20px;
     height: 100%;
   }

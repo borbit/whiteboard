@@ -1,6 +1,6 @@
 # @cjsx React.DOM
 page = require 'page'
-React = require 'react'
+React = require 'react/addons'
 cs = React.addons.classSet
 
 module.exports = ->

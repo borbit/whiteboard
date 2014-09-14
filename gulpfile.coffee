@@ -54,6 +54,7 @@ gulp.task 'compile-coffee', ->
     bundler.transform 'browserify-ejs'
     bundler.transform {sourceMap: no, coffeeout: yes}, 'coffee-reactify'
     bundler.transform 'coffeeify'
+    bundler.transform {NODE_ENV: ':)'}, 'envify'
 
     getExternalModules().forEach (module) ->
       bundler.exclude module.name
@@ -66,14 +67,16 @@ gulp.task 'compile-coffee', ->
 
 gulp.task 'compile-common-coffee', ->
   compile = gulpBrowserify
-    transform: ['coffeeify']
     extensions: ['.coffee']
     detectGlobals: no
 
   compile.on 'error', (err) ->
     console.log err
 
-  compile.on 'prebundle', (bundler) ->
+  compile.once 'prebundle', (bundler) ->
+    bundler.transform 'coffeeify'
+    bundler.transform {'NODE_ENV': ':)'}, 'envify'
+
     getExternalModules().forEach (module) ->
       bundler.require module.path, expose: module.name
 
@@ -164,8 +167,11 @@ getExternalModules = ->
   modules = modules.filter (module) -> module.length
   modules = modules.map (module) ->
     path = module.split("'")[1]
-    name = path.split('/').pop()
-    
+    name = path
+
+    if '.' in name
+      name = path.split('/').pop()
+
     return {
       path: path
       name: name

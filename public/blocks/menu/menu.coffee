@@ -1,4 +1,4 @@
-React = require 'react'
+React = require 'react/addons'
 render = require './menu.jsx'
 
 module.exports = React.createClass

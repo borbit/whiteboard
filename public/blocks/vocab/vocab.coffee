@@ -1,5 +1,6 @@
-React = require 'react'
+React = require 'react/addons'
 Fluxxor = require 'fluxxor'
+FluxStateMixin = require '../../coffee/react-mixins/flux_state'
 FluxChildMixin = Fluxxor.FluxChildMixin React
 FluxWatchMixin = Fluxxor.StoreWatchMixin
 render = require './vocab.jsx'
@@ -9,28 +10,36 @@ module.exports = React.createClass
   mixins: [
     FluxChildMixin
     FluxWatchMixin 'VocabStore'
+    FluxStateMixin 'VocabStore'
   ]
 
   onCardClosed: ->
     @setState word: null
 
-  onCardClick: (e) ->
-    flux = @getFlux()
-    flux.actions.VocabActions.getCard e.target.dataset.id
+  onCardClick: (cardId) ->
+    @getFlux().actions.VocabActions.getCard cardId
 
   onCardAdd: (word) ->
-    flux = @getFlux()
-    flux.actions.VocabActions.addCard word
+    @getFlux().actions.VocabActions.addCard word
 
-  onToggle: ->
+  onCardSelect: (cardId) ->
+    @getFlux().actions.VocabActions.selectCard cardId
+  
+  onCardsSelect: ->
+    @getFlux().actions.VocabActions.selectCards()
+
+  onCardsRemove: ->
+    if confirm 'Are you sure?'
+      @getFlux().actions.VocabActions.removeCards()
+
+  onCardLearn: (cardId) ->
+    @getFlux().actions.VocabActions.learnCard cardId
+
+  onToggleView: ->
     @setState condensed: !@state.condensed
 
   getInitialState: ->
     condensed: yes
-
-  getStateFromFlux: ->
-    flux = @getFlux()
-    flux.stores.VocabStore.getState()
 
   render: ->
     render.apply @

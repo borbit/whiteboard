@@ -7,7 +7,7 @@ module.exports =
   componentDidMount: ->
     $('body').on 'click', @detect
 
-  componentDidUnmount: ->
+  componentWillUnmount: ->
     $('body').off 'click', @detect
 
   detect: (e) ->
