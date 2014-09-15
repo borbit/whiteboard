@@ -14,5 +14,5 @@ module.exports = ->
     <div className="board__btns">
       <b className="board__btn"><i className="fa fa-remove"></i></b>
     </div>
-    <p contentEditable={@state.edititng} onClick={@onClick} ref="text">{@props.children}</p>
+    <p contentEditable={@state.edititng} onClick={@onClick} onBlur={@onBlur} ref="text">{@props.children}</p>
   </div>

@@ -22,6 +22,9 @@ module.exports = React.createClass
   onClick: ->
     @setState edititng: yes
 
+  onBlur: ->
+    @setState edititng: no
+
   onMouseOver: ->
     @setState hover: yes
 
